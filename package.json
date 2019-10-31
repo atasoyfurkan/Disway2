@@ -1,0 +1,50 @@
+{
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "test": "jest --watchAll"
+  },
+  "jest": {
+    "preset": "jest-expo"
+  },
+  "dependencies": {
+    "@expo/samples": "~3.0.3",
+    "@expo/vector-icons": "^10.0.3",
+    "@react-native-community/netinfo": "^4.3.3",
+    "@react-navigation/web": "^1.0.0-alpha.9",
+    "base-64": "^0.1.0",
+    "expo": "^34.0.1",
+    "expo-asset": "^6.0.0",
+    "expo-constants": "6.0.0",
+    "expo-file-system": "^6.0.2",
+    "expo-font": "^6.0.1",
+    "expo-location": "^6.0.0",
+    "expo-permissions": "^6.0.0",
+    "expo-secure-store": "^7.0.0",
+    "expo-web-browser": "6.0.0",
+    "jszip": "^3.2.2",
+    "native-base": "^2.13.5",
+    "react": "16.8.3",
+    "react-dom": "^16.8.6",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
+    "react-native-gesture-handler": "^1.4.1",
+    "react-native-maps": "^0.25.0",
+    "react-native-maps-directions": "^1.7.0",
+    "react-native-reanimated": "^1.1.0",
+    "react-native-swipe-gestures": "^1.0.3",
+    "react-native-web": "^0.11.4",
+    "react-navigation": "^3.12.0",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "stream": "0.0.2"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^6.0.0",
+    "jest-expo": "^34.0.0"
+  },
+  "private": true
+}
