@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 class ChoosenScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "You choose",
+    title: "Your choise",
     headerRight: (
       <Button
         success

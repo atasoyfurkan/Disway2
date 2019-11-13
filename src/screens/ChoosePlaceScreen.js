@@ -1,7 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
-import { Container, Content, Card, CardItem, Text, Button } from "native-base";
+import { View, TouchableOpacity } from "react-native";
+import {
+  Container,
+  Content,
+  Card,
+  CardItem,
+  Text,
+  Button,
+  Icon
+} from "native-base";
 import ChoosenTitle from "../components/ChoosenTitle";
 import { addNode, popNode, removeNode, resetNodes } from "../redux/actions";
 import SearchBar from "../components/SearchBar";
@@ -95,10 +103,18 @@ class ChoosePlaceScreen extends React.Component {
                 button
                 bordered
                 onPress={this.getPressHandler(data.item.index)}
+                style={{ justifyContent: "space-between" }}
               >
                 <Text style={this.assignPriority(data.item)}>
                   {data.item.renderName}
                 </Text>
+                <TouchableOpacity>
+                  <Icon
+                    style={{ color: "gray" }}
+                    type="MaterialIcons"
+                    name="info"
+                  />
+                </TouchableOpacity>
               </CardItem>
             )}
           />

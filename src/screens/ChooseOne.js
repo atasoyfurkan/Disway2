@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, TouchableOpacity } from "react-native";
 import { connect } from "react-redux";
 import {
   Container,
@@ -69,10 +69,18 @@ class ChoosePlaceScreen extends React.Component {
                 button
                 bordered
                 onPress={this.getPressHandler(data.item.index)}
+                style={{ justifyContent: "space-between" }}
               >
                 <Text style={this.assignPriority(data.item)}>
                   {data.item.renderName}
                 </Text>
+                <TouchableOpacity>
+                  <Icon
+                    style={{ color: "gray" }}
+                    type="MaterialIcons"
+                    name="info"
+                  />
+                </TouchableOpacity>
               </CardItem>
             )}
           />
