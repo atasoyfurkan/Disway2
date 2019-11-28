@@ -9,7 +9,7 @@ class ChoosenScreen extends React.Component {
       <Button
         success
         onPress={() => {
-          navigation.navigate("Map");
+          navigation.navigate("Map", { backHome: true });
         }}
         style={{
           marginRight: 5,

@@ -81,25 +81,31 @@ class Map extends React.Component {
 
     let places = [...this.props.nodes];
     let currentPlace = this.props.places[45];
-    let correctRoute = [currentPlace];
-    while (places.length !== 0) {
-      let min = Number.MAX_VALUE;
-      let index = 0;
-      places.forEach((item, i) => {
-        const distance =
-          Math.pow(currentPlace.latitude - item.latitude, 2) +
-          Math.pow(currentPlace.longitude - item.longitude, 2);
-        if (distance < min) {
-          min = distance;
-          index = i;
-        }
-      });
-      correctRoute.push(places[index]);
-      currentPlace = places[index];
-      places.splice(index, 1);
+    let correctRoute = [];
+    if (this.props.navigation.getParam("backHome")) {
+      correctRoute.push(this.props.nodes[0]);
+      correctRoute.push(currentPlace);
+    } else {
+      correctRoute.push(currentPlace);
+      while (places.length !== 0) {
+        let min = Number.MAX_VALUE;
+        let index = 0;
+        places.forEach((item, i) => {
+          const distance =
+            Math.pow(currentPlace.latitude - item.latitude, 2) +
+            Math.pow(currentPlace.longitude - item.longitude, 2);
+          if (distance < min) {
+            min = distance;
+            index = i;
+          }
+        });
+        correctRoute.push(places[index]);
+        currentPlace = places[index];
+        places.splice(index, 1);
+      }
     }
-    let dataArray = [];
 
+    let dataArray = [];
     let colorIndex = 0;
     for (let i = 1; i < correctRoute.length; i++) {
       const data = this.findData(correctRoute[i - 1], correctRoute[i]);

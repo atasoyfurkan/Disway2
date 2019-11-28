@@ -1,9 +1,11 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { createAppContainer } from "react-navigation";
+import { Root } from "native-base";
 import { createStackNavigator } from "react-navigation-stack";
 import MainPage from "./src/screens/MainPage";
 import ChoosePlaceScreen from "./src/screens/ChoosePlaceScreen";
+import InfoScreen from "./src/screens/InfoScreen";
 import ChoosenScreen from "./src/screens/ChoosenScreen";
 import Map from "./src/screens/Map";
 import store from "./src/redux/store";
@@ -23,7 +25,8 @@ const navigator = createStackNavigator({
   ChooseOne,
   ChoosenScreen,
   Map,
-  ChoosenOneScreen
+  ChoosenOneScreen,
+  InfoScreen
 });
 const Container = createAppContainer(navigator);
 export default class App extends React.Component {
@@ -115,10 +118,8 @@ export default class App extends React.Component {
               that.setState(prevState => ({
                 completed: prevState.completed + 1
               }));
-              console.log(name);
             });
           else {
-            console.log("exist");
             that.setState(prevState => ({
               completed: prevState.completed + 1
             }));
@@ -140,7 +141,6 @@ export default class App extends React.Component {
   fetchTiles = async (tileUrls, zipUrls, rootFolder) => {
     let counter = 0;
     for (let url of zipUrls) {
-      console.log("OKUNCAK", url);
       if ((await SecureStore.getItemAsync(url.replace("/", "-"))) !== null) {
         this.setState(prevState => ({
           completed: prevState.completed + 1
@@ -176,7 +176,6 @@ export default class App extends React.Component {
         completed: prevState.completed + 1
       }));
       SecureStore.setItemAsync(url.replace("/", "-"), "true");
-      console.log("OKUNDU");
     }
   };
 
@@ -197,9 +196,11 @@ export default class App extends React.Component {
         />
       );
     return (
-      <Provider store={store}>
-        <Container />
-      </Provider>
+      <Root>
+        <Provider store={store}>
+          <Container />
+        </Provider>
+      </Root>
     );
   }
 }

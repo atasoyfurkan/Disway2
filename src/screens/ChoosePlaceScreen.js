@@ -57,13 +57,10 @@ class ChoosePlaceScreen extends React.Component {
       });
     }
   }
-  componentDidMount() {
-    const { navigation, resetNodes } = this.props;
-    this.focusListener = navigation.addListener("didFocus", () => {
-      resetNodes();
-    });
-  }
 
+  getOnPressHandlerInfo = (id, name) => _ => {
+    this.props.navigation.navigate("InfoScreen", { id, name });
+  };
   assignPriority = item => {
     let color = "black";
     if (item.priority === 1) color = "red";
@@ -108,7 +105,12 @@ class ChoosePlaceScreen extends React.Component {
                 <Text style={this.assignPriority(data.item)}>
                   {data.item.renderName}
                 </Text>
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={this.getOnPressHandlerInfo(
+                    data.item.index,
+                    data.item.name
+                  )}
+                >
                   <Icon
                     style={{ color: "gray" }}
                     type="MaterialIcons"

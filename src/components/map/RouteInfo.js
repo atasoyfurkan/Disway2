@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Platform
+} from "react-native";
 import {
   Body,
   Title,
@@ -62,7 +68,10 @@ class RouteInfo extends Component {
           <Left>
             {this.props.dataArray.length !== 1 && this.state.clicked && (
               <TouchableOpacity
-                style={{ marginLeft: 10 }}
+                style={{
+                  paddingLeft: 25,
+                  paddingRight: 15
+                }}
                 onPress={() => {
                   this.props.handleSelectRoute(null, false);
                   this.setState({ clicked: false });
@@ -73,11 +82,15 @@ class RouteInfo extends Component {
             )}
           </Left>
           <Body
-            style={{
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: 5
-            }}
+            style={
+              Platform.OS === "ios"
+                ? {
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: 5
+                  }
+                : { marginBottom: 5 }
+            }
           >
             {mode === "content" && (
               <Text style={{ fontSize: 17, fontWeight: "600" }}>
