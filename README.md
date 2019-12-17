@@ -4,4 +4,4 @@ What is: A mobile application for both android and ios. The aim of the applicati
 
 Application design with: - React Native, Expo and NativeBase 
 
-Accessible from: expo.io/@disway/myroutte
+Accessible from: www.expo.io/@disway/myroutte
