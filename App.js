@@ -16,9 +16,11 @@ import * as FileSystem from "expo-file-system";
 import LoadingScreen from "./src/screens/LoadingScreen";
 import * as SecureStore from "expo-secure-store";
 import JSZip from "jszip";
+import {AsyncStorage} from 'react-native'
 import { decode as atob, encode as btoa } from "base-64";
 import { createDownloadResumable } from "expo-file-system";
-
+import { SizeClassIOS } from "expo/build/ScreenOrientation/ScreenOrientation";
+import sizes from './src/data/fileSizes.json'
 const navigator = createStackNavigator({
   MainPage,
   ChoosePlaceScreen,
@@ -104,17 +106,27 @@ export default class App extends React.Component {
     await FileSystem.makeDirectoryAsync(FileSystem.documentDirectory + "16", {
       intermediates: true
     });
+      let infos = []
     map2 = zipUrls.map(url => {
       const name = url + ".zip";
       let that = this;
-      return FileSystem.getInfoAsync(FileSystem.documentDirectory + name).then(
+      let infoFile
+      return FileSystem.getInfoAsync(FileSystem.documentDirectory + name)
+      // .then(result=>{
+      //   infoFile = result 
+      //   return FileSystem.getInfoAsync("https://github.com/atasoyfurkan/tiles/raw/master/tiles/tiles/" +
+      //   name)
+      // })
+      .then(
         function(result) {
-          if (!result.exists)
+          
+          if (!result.exists || result.size !== sizes.find(s=>s.name===name).size)
             return FileSystem.downloadAsync(
               "https://github.com/atasoyfurkan/tiles/raw/master/tiles/tiles/" +
                 name,
               FileSystem.documentDirectory + name
-            ).then(function() {
+            )
+            .then(function() {
               that.setState(prevState => ({
                 completed: prevState.completed + 1
               }));
@@ -126,6 +138,7 @@ export default class App extends React.Component {
             return;
           }
         }
+
       );
     });
 
