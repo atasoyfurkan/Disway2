@@ -76,7 +76,15 @@ class MainPage extends React.Component {
     return (
       <Container>
         <Header style={styles.header}>
-          <Text style={styles.brand}>myRouTTe</Text>
+          <Text
+            style={
+              Platform.OS === "ios"
+                ? styles.brand
+                : [styles.brand, { paddingTop: 14 }]
+            }
+          >
+            myRouTTe
+          </Text>
         </Header>
 
         <Content padder bounces={false} contentContainerStyle={styles.content}>
@@ -132,7 +140,7 @@ const styles = StyleSheet.create({
     color: "#f2f4f5",
     fontFamily: Platform.OS === "ios" ? "Optima" : "notoserif",
     fontWeight: "500",
-    fontSize: Platform.OS === "ios" ? 30 : 28,
+    fontSize: 30,
     textAlign: "center",
     shadowColor: "#000",
     shadowOffset: {
