@@ -429,7 +429,7 @@ const place_reducer = (state, action) => [
   },
   {
     name: "BesYuzYılVakfıTürkMusevileriMüzesi",
-    renderName: "Quincentennial Foundation Museum of Turkish",
+    renderName: "Jewish Museum of Turkey",
     desc: `Jewish Museum of Turkey (officially Quincentennial Foundation Museum of Turkish Jews; Turkish: 500. Yıl Vakfı Türk Musevileri Müzesi) is a cultural center established by the Quincentennial Foundation to inform the society of the traditions and history of Turkish Jewry. It was inaugurated on November 25, 2001. The Quincentennial Foundation was established in 1989 by 113 Turkish citizens, Jews and Muslims alike, to celebrate the five hundredth anniversary of the arrival of Sephardim to the Ottoman Empire.[1] The idea of a museum was proposed by Naim Güleryüz who is now its curator and the foundation was financed by the prominent Jewish Kamhi family. `,
     latitude: 41.0267866,
     longitude: 28.9727283,

@@ -352,8 +352,10 @@ class Map extends React.Component {
             onRegionChangeComplete={Region => {
               this.state.Region = Region;
             }}
+            mapType={this.state.connectionStatus ? "standard" : "none"}
+            provider="google"
             showsUserLocation
-            showsMyLocationButton
+            showsMyLocationButton={false}
           >
             {!this.state.connectionStatus && (
               <UrlTile urlTemplate={this.state.offlineUrlTemplate} zIndex={1} />

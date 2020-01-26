@@ -66,7 +66,7 @@ class ChoosePlaceScreen extends React.Component {
     if (item.priority === 1) color = "red";
     if (item.priority === 2) color = "blue";
     if (item.priority === 3) color = "green";
-    if (item.priority === 4) color = "orange";
+    if (item.priority === 4) color = "purple";
 
     return { color };
   };
@@ -84,7 +84,7 @@ class ChoosePlaceScreen extends React.Component {
             <Text style={{ color: "red" }}>**** </Text>
             <Text style={{ color: "blue" }}>*** </Text>
             <Text style={{ color: "green" }}>** </Text>
-            <Text style={{ color: "orange" }}>* </Text>
+            <Text style={{ color: "purple" }}>* </Text>
           </View>
           <Card
             dataArray={this.props.places.filter(
